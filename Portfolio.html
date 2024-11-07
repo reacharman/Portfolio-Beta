@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arman's Portfolio</title>
+    <meta name="color-scheme" content="dark">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        html {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #000000;
+            color: #ffffff;
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body.light-mode {
+            background-color: #ffffff;
+            color: #333333;
+        }
+        .container {
+            text-align: center;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px; /* Slightly rounded corners */
+            margin-bottom: 2rem;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body.light-mode .profile-image {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: #333333;
+            color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        body.light-mode .toggle-btn {
+            background-color: #f0f0f0;
+            color: #333333;
+        }
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .toggle-btn i {
+            font-size: 1.2rem;
+            transition: transform 0.5s ease;
+        }
+        body.light-mode .toggle-btn .fa-moon {
+            display: inline-block;
+        }
+        body.light-mode .toggle-btn .fa-sun {
+            display: none;
+        }
+        .toggle-btn .fa-moon {
+            display: none;
+        }
+        .toggle-btn .fa-sun {
+            display: inline-block;
+        }
+        @keyframes rotateIcon {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .toggle-btn:active i {
+            animation: rotateIcon 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img 
+            src="IMG_20230901_171828.jpg" 
+            alt="Profile" 
+            class="profile-image"
+        >
+        <h1>Hi, I'm Arman<br>A Full Stack Developer</h1>
+    </div>
+    <button class="toggle-btn" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            
+            // Animate button icon
+            const btn = document.querySelector('.toggle-btn');
+            btn.querySelector('i').style.animation = 'none';
+            setTimeout(() => {
+                btn.querySelector('i').style.animation = '';
+            }, 10);
+        }
+    </script>
+</body>
+</html>
